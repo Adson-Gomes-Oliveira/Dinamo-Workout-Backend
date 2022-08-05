@@ -45,6 +45,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('workoutSchemas');
+    await queryInterface.dropTable('workout_schemas');
   }
 };
