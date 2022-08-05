@@ -5,7 +5,7 @@
 * @param {import('sequelize').DataTypes} DataTypes
 */
 
-const UserModel = (sequelize, DataTypes) => {
+const User = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -13,13 +13,12 @@ const UserModel = (sequelize, DataTypes) => {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     birth_date: DataTypes.DATEONLY,
-    active: DataTypes.BOOLEAN,
-    created_at: DataTypes.DATE,
-    updated_at: DataTypes.DATE
+    active: DataTypes.BOOLEAN
   }, {
-    tableName: 'users'
+    tableName: 'users',
+    underscored: true
   });
   return User;
 };
 
-module.exports = UserModel;
+module.exports = User;

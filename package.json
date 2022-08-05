@@ -6,7 +6,7 @@
   "scripts": {
     "view": "npm ls --depth 0",
     "test": "mocha ./tests/**/ --exit",
-    "dev": "nodemon index.js",
+    "dev": "nodemon ./src/server.js",
     "start": "node index.js",
     "swagger": "node swagger.js",
     "coverage": "nyc --all npm run test"
