@@ -19,8 +19,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      description: {
-        type: Sequelize.TEXT
+      exerciseId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        field: 'exercise_id',
+        references: {
+          model: 'exercise',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +39,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        onUpdate: 'CASCADE',
         field: 'updated_at'
       }
     });
