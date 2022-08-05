@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
         field: 'how_to'
       },
-      difficult: {
+      mode: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -38,7 +38,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('exercises');
   }
 };
