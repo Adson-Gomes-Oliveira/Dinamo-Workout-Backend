@@ -12,7 +12,9 @@ const workoutSchema = (sequelize, DataTypes) => {
   },{
     tableName: 'workout_schemas',
     underscored: true
-  })
+  });
+
+  return workoutSchema;
 }
 
 module.exports = workoutSchema;

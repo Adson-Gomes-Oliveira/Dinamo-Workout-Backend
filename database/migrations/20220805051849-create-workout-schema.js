@@ -8,7 +8,7 @@ module.exports = {
 */
 
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('workoutSchemas', {
+    await queryInterface.createTable('workout_schemas', {
       id: {
         allowNull: false,
         autoIncrement: true,
