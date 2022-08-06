@@ -1,14 +1,8 @@
 'use strict';
 
 module.exports = {
-  
-/**
-* @param {import('sequelize').Sequelize} Sequelize
-* @param {import('sequelize').queryInterface} queryInterface
-*/
-
   async up (queryInterface, Sequelize) {
-    queryInterface.bulkInsert('users', [
+    await queryInterface.bulkInsert('users', [
       {
         username: 'root',
         email: 'adsonpersonalemail@gmail.com',
@@ -34,7 +28,7 @@ module.exports = {
     ]);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface, _Sequelize) {
     queryInterface.bulkDelete('users', null, {});
   }
 };

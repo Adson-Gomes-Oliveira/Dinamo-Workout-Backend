@@ -8,6 +8,7 @@
 const workoutSchema = (sequelize, DataTypes) => {
   const workoutSchema = sequelize.define('workoutSchema', {
     schema: DataTypes.STRING,
+    exercise_id: DataTypes.INTEGER,
     description: DataTypes.TEXT
   },{
     tableName: 'workout_schemas',

@@ -1,33 +1,27 @@
 'use strict';
-
 module.exports = {
-
-/**
-* @param {import('sequelize').Sequelize} Sequelize
-* @param {import('sequelize').queryInterface} queryInterface
-*/
-
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('workout_schemas', {
+    await queryInterface.createTable('exercises', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      schema: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      exerciseId: {
+      reps: {
+        type: Sequelize.INTEGER
+      },
+      howTo: {
+        type: Sequelize.STRING,
+        field: 'how_to'
+      },
+      mode: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        field: 'exercise_id',
-        references: {
-          model: 'exercises',
-          key: 'id'
-        }
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -44,7 +38,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('workout_schemas');
+  async down(queryInterface, _Sequelize) {
+    await queryInterface.dropTable('exercises');
   }
 };
