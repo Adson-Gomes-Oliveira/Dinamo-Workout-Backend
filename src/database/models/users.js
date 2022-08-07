@@ -9,14 +9,14 @@ const User = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
-    password_hash: DataTypes.STRING,
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    birth_date: DataTypes.DATEONLY,
-    active: DataTypes.BOOLEAN
+    passwordHash: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    birthDate: DataTypes.DATEONLY,
+    active: DataTypes.BOOLEAN,
   }, {
     tableName: 'users',
-    underscored: true
+    underscored: true,
   });
   return User;
 };
