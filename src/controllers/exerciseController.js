@@ -14,7 +14,12 @@ const getAll = async (req, res) => {
   const data = await exerciseServices.getAll();
   return res.status(200).json(data);
 };
+const createWithSchema = async (req, res) => {
+  const data = await exerciseServices.createWithSchema(req.body);
+  res.status(200).json(data);
+}
 
 module.exports = {
   getAll,
+  createWithSchema,
 }
