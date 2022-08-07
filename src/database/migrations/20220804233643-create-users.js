@@ -43,6 +43,15 @@ module.exports = {
         type: Sequelize.DATEONLY,
         field: 'birth_date',
       },
+      healthId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        field: 'health_id',
+        references: {
+          model: 'health',
+          key: 'id',
+        },
+      },
       active: {
         allowNull: false,
         type: Sequelize.BOOLEAN,

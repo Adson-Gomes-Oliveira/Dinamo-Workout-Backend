@@ -13,6 +13,7 @@ const User = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     birthDate: DataTypes.DATEONLY,
+    healthId: DataTypes.INTEGER,
     active: DataTypes.BOOLEAN,
   }, {
     tableName: 'users',

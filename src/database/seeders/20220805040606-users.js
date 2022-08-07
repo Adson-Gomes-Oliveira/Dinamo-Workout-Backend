@@ -10,9 +10,7 @@ module.exports = {
         first_name: 'Adson',
         last_name: 'Gomes Oliveira',
         birth_date: '2000-10-10',
-        active: Sequelize.literal('DEFAULT'),
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT')
+        health_id: 1,
       },
       {
         username: 'johstetic',
@@ -21,9 +19,7 @@ module.exports = {
         first_name: 'Joana',
         last_name: 'Santana Gomes',
         birth_date: '2000-03-25',
-        active: Sequelize.literal('DEFAULT'),
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT')
+        health_id: 2,
       }
     ]);
   },
