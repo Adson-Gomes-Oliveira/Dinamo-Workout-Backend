@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       username: {
         allowNull: false,
@@ -26,40 +26,40 @@ module.exports = {
       passwordHash:{
         allowNull: false,
         type: Sequelize.STRING,
-        field: 'password_hash'
+        field: 'password_hash',
       },
       firstName: {
         allowNull: false,
         type: Sequelize.STRING,
-        field: 'first_name'
+        field: 'first_name',
       },
       lastName: {
         allowNull: false,
         type: Sequelize.STRING,
-        field: 'last_name'
+        field: 'last_name',
       },
       birthDate: {
         allowNull: false,
         type: Sequelize.DATEONLY,
-        field: 'birth_date'
+        field: 'birth_date',
       },
       active: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        defaultValue: 1
+        defaultValue: 1,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'created_at'
+        field: 'created_at',
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         onUpdate: 'CASCADE',
-        field: 'updated_at'
+        field: 'updated_at',
       }
     });
   },

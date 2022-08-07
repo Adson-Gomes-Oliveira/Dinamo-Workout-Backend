@@ -6,35 +6,52 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       reps: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       howTo: {
         type: Sequelize.STRING,
-        field: 'how_to'
+        field: 'how_to',
       },
       mode: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      schemaId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        field: 'schema_id',
+        references: {
+          model: 'schemas',
+          key: 'id',
+        },
+      },
+      weightRecord: {
+        type: Sequelize.INTEGER,
+        field: 'weight_record',
+      },
+      repsRecord: {
+        type: Sequelize.INTEGER,
+        field: 'reps_record',
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'created_at'
+        field: 'created_at',
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         onUpdate: 'CASCADE',
-        field: 'updated_at'
+        field: 'updated_at',
       }
     });
   },
