@@ -9,8 +9,6 @@ module.exports = {
         how_to: 'https://www.youtube.com/watch?v=sqOw2Y6uDWQ',
         mode: 'free',
         schema_id: 1,
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT'),
       },
       {
         name: 'Supino Reto',
@@ -18,8 +16,6 @@ module.exports = {
         how_to: 'https://www.youtube.com/watch?v=l7zxARHb7zI',
         mode: 'machine',
         schema_id: 1,
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT'),
       },
       {
         name: 'Pec Deck',
@@ -27,8 +23,6 @@ module.exports = {
         how_to: 'https://www.youtube.com/watch?v=Ru9OVOUlp0U',
         mode: 'machine',
         schema_id: 1,
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT'),
       },
       {
         name: 'Crossover',
@@ -36,8 +30,6 @@ module.exports = {
         how_to: 'https://www.youtube.com/watch?v=HNUji0rHFCs',
         mode: 'machine',
         schema_id: 1,
-        created_at: Sequelize.literal('DEFAULT'),
-        updated_at: Sequelize.literal('DEFAULT'),
       }
     ]);
   },

@@ -5,15 +5,12 @@ module.exports = {
     queryInterface.bulkInsert('schemas', [
       {
         schema: 'A',
-        created_at: Sequelize.literal('DEFAULT'),
       },
       {
         schema: 'B',
-        created_at: Sequelize.literal('DEFAULT'),
       },
       {
         schema: 'C',
-        created_at: Sequelize.literal('DEFAULT'),
       },
     ]);
   },
