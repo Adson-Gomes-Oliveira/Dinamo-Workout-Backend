@@ -19,6 +19,14 @@ const User = (sequelize, DataTypes) => {
     tableName: 'users',
     underscored: true,
   });
+
+  User.associate = (models) => {
+    User.belongsTo(models.Health, {
+      as: 'health',
+      foreignKey: 'healthId',
+    });
+  };
+
   return User;
 };
 
