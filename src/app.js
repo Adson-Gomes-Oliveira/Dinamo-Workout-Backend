@@ -12,5 +12,6 @@ app.use(cors());
 app.use('/users', routers.Users);
 app.use('/exercises', routers.Exercises);
 app.use('/schemas', routers.Schema);
+app.use('/health', routers.Health);
 
 module.exports = app;
