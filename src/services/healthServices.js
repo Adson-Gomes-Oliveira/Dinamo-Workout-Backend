@@ -1,4 +1,4 @@
-const { Health } = require('../models/health');
+const { Health } = require('../database/models');
 
 const getAll = async () => {
   const response = await Health.findAll();
