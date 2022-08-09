@@ -1,4 +1,5 @@
 const { User, Health } = require('../database/models/index');
+const encryptPassword = require ('../helpers/encryptPassword');
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 
@@ -17,22 +18,23 @@ const getAllWithHealth = async () => {
   });
   return response;
 };
-const create= async (payload) => {
+const create = async (payload) => {
   const t = await sequelize.transaction();
-  const { username, email, passwordHash, firstName,
-    lastName, birthDate } = payload;
+  const { username, email, passwordNoCrypt, confirmPassword, 
+    firstName, lastName, birthDate } = payload;
+  
   try {
-    const newHealth = await Health.create(
-      { transaction: t },
-    );
+    const newHealth = await Health.create({ transaction: t });
 
+    const password = encryptPassword.encrypt(passwordNoCrypt);
     await User.create(
-      { username, email, passwordHash, firstName, lastName,
-        birthDate, healthId: newHealth.id },
+      { username, email, password, firstName,
+        lastName, birthDate, healthId: newHealth.id },
       { transaction: t },
     );
 
     await t.commit();
+
     return true;
   } catch (error) {
     await t.rollback();
