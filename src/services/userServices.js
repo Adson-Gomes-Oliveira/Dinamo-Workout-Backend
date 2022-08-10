@@ -7,15 +7,16 @@ const sequelize = new Sequelize(config.development);
 
 const getAll = async () => {
   const response = await User.findAll();
+
   return response;
 };
 const getAllWithHealth = async () => {
-  // Eager Loading
   const response = await User.findAll({
     include: [{ model: Health, as: 'health', attributes: {
       exclude: ['id'],
     } }],
   });
+
   return response;
 };
 const create = async (payload) => {
