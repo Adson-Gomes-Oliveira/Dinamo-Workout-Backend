@@ -47,7 +47,8 @@ const createWithSchema = async (payload) => {
 
     return { result: payload, code: status.CREATED };
   } catch (error) {
-    return { result: error, code: status.INTERNAL };
+    await t.rollBack();
+    return { message: error, code: status.INTERNAL };
   };
 };
 

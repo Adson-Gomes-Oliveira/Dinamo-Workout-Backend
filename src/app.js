@@ -19,6 +19,7 @@ app.use(authorization);
 app.use('/exercises', routers.Exercises);
 app.use('/schemas', routers.Schema);
 app.use('/health', routers.Health);
+app.use('/records', routers.Records);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(error);
 

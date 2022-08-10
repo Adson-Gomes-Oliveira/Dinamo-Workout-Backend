@@ -23,9 +23,7 @@ const Record = (sequelize, DataTypes) => {
       as: 'user',
       foreignKey: 'userId',
     });
-  };
 
-  Record.associate = (models) => {
     Record.belongsTo(models.Schema, {
       as: 'schema',
       foreignKey: 'schemaId',
