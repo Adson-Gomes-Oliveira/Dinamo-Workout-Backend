@@ -1,12 +1,6 @@
 'use strict';
 
 module.exports = {
-
-/**
-* @param {import('sequelize').Sequelize} Sequelize
-* @param {import('sequelize').queryInterface} queryInterface
-*/
-
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
       id: {
@@ -23,10 +17,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      passwordHash:{
+      password:{
         allowNull: false,
         type: Sequelize.STRING,
-        field: 'password_hash',
       },
       firstName: {
         allowNull: false,
@@ -56,6 +49,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: 1,
+      },
+      token: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
