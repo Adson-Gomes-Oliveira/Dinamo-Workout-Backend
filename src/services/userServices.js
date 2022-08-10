@@ -20,7 +20,7 @@ const getAllWithHealth = async () => {
 };
 const create = async (payload) => {
   const t = await sequelize.transaction();
-  const { username, email, passwordNoCrypt, confirmPassword, 
+  const { username, email, passwordNoCrypt, 
     firstName, lastName, birthDate } = payload;
   
   try {
@@ -37,6 +37,7 @@ const create = async (payload) => {
 
     return true;
   } catch (error) {
+    console.log(error);
     await t.rollback();
     return error;
   }

@@ -5,6 +5,7 @@ const codes = {
   NO_CONTENT: 404,
   INTERNAL: 500,
   INVALID_ENTITY: 422,
+  UNAUTHORIZED: 401,
 };
 
 module.exports = codes;

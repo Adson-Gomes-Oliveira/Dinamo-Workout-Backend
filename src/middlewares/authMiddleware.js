@@ -1,19 +1,32 @@
-require('dotenv');
-const { User } = require('../database/models');
-const jwt = require('../helpers/JSONWebToken');
-const encrypt = require('../helpers/encryptPassword');
+const JWT = require('../helpers/JSONWebToken');
+const customError = require('../helpers/customError');
+const status = require('../helpers/httpStatus');
 
-const generateToken = (user) => {
-  const { email, password } = user;
-  const findUser = await User.findOne({ where: { email } }) ;
-
-  encrypt.check(password, findUser.password);
-  const { password: _, ...noPasswordUser  } = findUser;
-
-  const token = jwt.createToken(noPasswordUser.dataValues);
-  return token;
-}
-
-const verifyToken = (token) => {
+const authorization = (req, res, next) => {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      const err = customError({
+        message: 'Unauthorized, Token is required',
+        code: status.UNAUTHORIZED,
+      });
+      throw err;
+    };
   
-}
+    const user = JWT.checkToken(authorization);
+    if (user.message) {
+      const err = customError({
+        message: 'Unauthorized, invalid token!',
+        code: status.UNAUTHORIZED,
+      });
+      throw err;
+    }
+  
+    req.user = user;
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = authorization;
