@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up (queryInterface, _Sequelize) {
     queryInterface.bulkInsert('records', [
       {
         user_id: 1,
         schema_id: 2,
         duration: 90,
         rate: 4,
-        note: `Foi um bom treino mas pequei um pouco em ir até a falha preciso corrigir.`,
+        note: `Foi um bom treino mas pequei um pouco em ir até a falha preciso corrigir.`
       },
     ]);
   },

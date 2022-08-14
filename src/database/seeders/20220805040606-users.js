@@ -10,7 +10,7 @@ module.exports = {
         first_name: 'Adson',
         last_name: 'Gomes Oliveira',
         birth_date: '2000-10-10',
-        health_id: 1,
+        health_id: 1
       },
       {
         username: 'johstetic',
@@ -18,8 +18,8 @@ module.exports = {
         password: '$2b$10$lng2f0H8/dp9UiuuFnxnDOKfsxvUb0PIvWSNZlaoekiFdrDkDlfAa',
         first_name: 'Joana',
         last_name: 'Santana Gomes',
-        birth_date: '2000-03-25',
-        health_id: 2,
+        birth_date: '2001-02-24',
+        health_id: 2
       }
     ]);
   },

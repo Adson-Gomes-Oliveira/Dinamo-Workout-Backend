@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       userId: {
         allowNull: false,
@@ -16,6 +16,7 @@ module.exports = {
           model: 'users',
           key: 'id',
         },
+        onDelete: 'CASCADE'
       },
       schemaId: {
         allowNull: false,
@@ -25,22 +26,23 @@ module.exports = {
           model: 'schemas',
           key: 'id',
         },
+        onDelete: 'CASCADE'
       },
       duration: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       rate: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       note: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         field: 'created_at',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
     });
   },
