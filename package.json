@@ -9,7 +9,10 @@
     "dev": "nodemon ./src/server.js",
     "start": "node index.js",
     "swagger": "node swagger.js",
-    "coverage": "nyc --all npm run test"
+    "coverage": "nyc --all npm run test",
+    "drop": "npx sequelize db:drop",
+    "prestart": "npx sequelize db:create && db:migrate",
+    "seed": "npx sequelize db:seed"
   },
   "author": "Adson Gomes Oliveira",
   "license": "MIT",
@@ -22,9 +25,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.3",
-    "swagger-autogen": "^2.21.5",
-    "swagger-ui-express": "^4.5.0"
+    "sequelize": "^6.21.3"
   },
   "devDependencies": {
     "chai": "^4.3.6",

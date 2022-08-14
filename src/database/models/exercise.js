@@ -1,10 +1,5 @@
 'use strict';
 
-/**
-* @param {import('sequelize').Sequelize} sequelize
-* @param {import('sequelize').DataTypes} DataTypes
-*/
-
 const Exercise = (sequelize, DataTypes) => {
   const Exercise = sequelize.define('Exercise', {
     name: DataTypes.STRING,
@@ -13,16 +8,16 @@ const Exercise = (sequelize, DataTypes) => {
     mode: DataTypes.STRING,
     schemaId: DataTypes.INTEGER,
     weightRecord: DataTypes.INTEGER,
-    repsRecord: DataTypes.INTEGER,
+    repsRecord: DataTypes.INTEGER
   }, {
     tableName: 'exercises',
-    underscored: true,
+    underscored: true
   });
 
   Exercise.associate = (models) => {
     Exercise.belongsTo(models.Schema, {
       as: 'schema',
-      foreignKey: 'schemaId',
+      foreignKey: 'schemaId'
     });
   };
 

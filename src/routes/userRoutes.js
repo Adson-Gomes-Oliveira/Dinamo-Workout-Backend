@@ -1,8 +1,11 @@
 const express = require('express');
 const userControllers = require('../controllers/userControllers');
+const authorization = require('./middlewares/authMiddleware');
+
 const router = express.Router();
 
-router.get('/health', userControllers.getAll);
 router.post('/', userControllers.create);
+router.app(authorization);
+router.get('/details', userControllers.getAll);
 
 module.exports = router;

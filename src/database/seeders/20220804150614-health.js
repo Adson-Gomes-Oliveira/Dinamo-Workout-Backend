@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up (queryInterface, _Sequelize) {
     queryInterface.bulkInsert('health', [
       {
         height: 0,
@@ -18,7 +18,7 @@ module.exports = {
         left_calf: 0,
         waistline: 0,
         chest: 0,
-        sholders: 0,
+        sholders: 0
       },
       {
         height: 0,
@@ -35,8 +35,8 @@ module.exports = {
         left_calf: 0,
         waistline: 0,
         chest: 0,
-        sholders: 0,
-      },
+        sholders: 0
+      }
     ]);
   },
 

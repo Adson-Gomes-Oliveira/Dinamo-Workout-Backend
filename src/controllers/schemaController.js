@@ -1,8 +1,13 @@
 const schemaServices = require('../services/schemaServices');
 
-const getAll = async (_req, res) => {
-  const data = await schemaServices.getAll();
-  res.status(200).json(data);
+const getAll = async (_req, res, next) => {
+  try {
+    const data = await schemaServices.getAll();
+
+    return res.status(data.code).json(data.result);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {

@@ -10,54 +10,39 @@ const getAll = async () => {
 
   return { result: response, code: status.OK };
 };
+
 const getAllWithDetails = async () => {
   const response = await Record.findAll({
-    include: [{
-      model: User, as: 'user', attributes: { 
-        exclude: ['password', 'id', 'createdAt', 'updatedAt'] 
-      },
-    }, {
-      model: Schema, as: 'schema', attributes: { 
-        exclude: ['id'] 
-      },
-    }],
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password', 'id', 'createdAt', 'updatedAt'] }},
+      { model: Schema, as: 'schema', attributes: { exclude: ['id'] } }
+    ],
   });
 
   return { result: response, code: status.OK };
 };
+
 const create = async (payload) => {
+  // Miss Validation
+
   const { username, schema, duration, rate, note } = payload;
-  const t = await sequelize.transaction();
 
   try {
-    const findUser = await User.findOne(
-      { where: { username } },
-      { transaction: t },
-    );
-    const findSchema = await Schema.findOne(
-      { where: { schema } },
-      { transaction: t },
-    );
+    const transaction = await sequelize.transaction(async (t) => {
+      const findUser = await User.findOne({ where: { username } });
+      const findSchema = await Schema.findOne({ where: { schema } });
+  
+      await Record.create({ userId: findUser.id, schemaId: findSchema.id, 
+        duration, rate, note }, { transaction: t });
+  
+      return {
+        result: { userId: findUser.id, schemaId: findSchema.id, duration, rate, note },
+        code: status.CREATED
+      };
+    });
 
-    await Record.create(
-      { userId: findUser.id, schemaId: findSchema.id, duration, rate, note },
-      { transaction: t },
-    );
-
-    await t.commit();
-
-    return {
-      result: {
-        userId: findUser.id,
-        schemaId: findSchema.id,
-        duration,
-        rate,
-        note
-      },
-      code: status.CREATED,
-    };
+    return transaction;
   } catch (error) {
-    await t.rollBack();
     return { message: error, code: status.INTERNAL };
   }
 };

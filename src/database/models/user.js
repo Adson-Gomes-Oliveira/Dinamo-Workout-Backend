@@ -1,10 +1,5 @@
 'use strict';
 
-/**
-* @param {import('sequelize').Sequelize} sequelize
-* @param {import('sequelize').DataTypes} DataTypes
-*/
-
 const User = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
@@ -15,16 +10,16 @@ const User = (sequelize, DataTypes) => {
     birthDate: DataTypes.DATEONLY,
     healthId: DataTypes.INTEGER,
     active: DataTypes.BOOLEAN,
-    token: DataTypes.STRING,
+    token: DataTypes.STRING
   }, {
     tableName: 'users',
-    underscored: true,
+    underscored: true
   });
 
   User.associate = (models) => {
     User.belongsTo(models.Health, {
       as: 'health',
-      foreignKey: 'healthId',
+      foreignKey: 'healthId'
     });
   };
 

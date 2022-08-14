@@ -4,8 +4,8 @@ const status = require('./httpStatus');
 
 const createToken = (user) => {
   const token = JWT.sign({ data: user }, process.env.JWT_SECRET, {
-    expiresIn: '15m',
-    algorithm: 'HS256',
+    expiresIn: '1h',
+    algorithm: 'HS256'
   });
 
   return token;
@@ -18,12 +18,12 @@ const checkToken = (token) => {
   } catch (error) {
     return {
       message: 'Unauthorized, invalid token!',
-      code: status.UNAUTHORIZED,
+      code: status.UNAUTHORIZED
     }
   }
-}
+};
 
 module.exports = {
   createToken,
-  checkToken,
-}
+  checkToken
+};

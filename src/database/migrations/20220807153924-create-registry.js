@@ -1,12 +1,12 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('records', {
+    await queryInterface.createTable('registries', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       userId: {
         allowNull: false,
@@ -16,6 +16,7 @@ module.exports = {
           model: 'users',
           key: 'id',
         },
+        onDelete: 'CASCADE'
       },
       schemaId: {
         allowNull: false,
@@ -25,26 +26,27 @@ module.exports = {
           model: 'schemas',
           key: 'id',
         },
+        onDelete: 'CASCADE'
       },
       duration: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       rate: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       note: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
         field: 'created_at',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('records');
+  async down(queryInterface, _Sequelize) {
+    await queryInterface.dropTable('registries');
   }
 };

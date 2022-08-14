@@ -14,13 +14,12 @@ app.use(helmet());
 app.use(cors());
 
 app.use('/users', routers.Users);
-app.use('/sign-in', routers.SignIn);
+app.use('/login', routers.SignIn);
 app.use(authorization);
 app.use('/exercises', routers.Exercises);
 app.use('/schemas', routers.Schema);
 app.use('/health', routers.Health);
-app.use('/records', routers.Records);
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/registries', routers.Records);
 app.use(error);
 
 module.exports = app;

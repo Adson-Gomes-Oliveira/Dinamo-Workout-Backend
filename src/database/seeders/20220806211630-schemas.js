@@ -1,16 +1,16 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up (queryInterface, _Sequelize) {
     queryInterface.bulkInsert('schemas', [
       {
-        schema: 'A',
+        schema: 'A'
       },
       {
-        schema: 'B',
+        schema: 'B'
       },
       {
-        schema: 'C',
+        schema: 'C'
       },
     ]);
   },

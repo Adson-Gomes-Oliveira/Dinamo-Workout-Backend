@@ -1,18 +1,20 @@
 'use strict';
 
-/**
-* @param {import('sequelize').Sequelize} sequelize
-* @param {import('sequelize').DataTypes} DataTypes
-*/
-
 const Schema = (sequelize, DataTypes) => {
   const Schema = sequelize.define('Schema', {
-    schema: DataTypes.STRING,
+    schema: DataTypes.STRING
   },{
     tableName: 'schemas',
     underscored: true,
-    updatedAt: false,
+    updatedAt: false
   });
+
+  Schema.associate = (models) => {
+    Schema.hasMany(models.Exercise, {
+      as: 'schema',
+      foreignKey: 'schema_id'
+    });
+  };
 
   return Schema;
 }
