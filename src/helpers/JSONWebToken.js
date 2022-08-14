@@ -21,7 +21,7 @@ const checkToken = (token) => {
       code: status.UNAUTHORIZED
     }
   }
-}
+};
 
 module.exports = {
   createToken,
