@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  node:
+    build: .
+    volumes:
+      - ./:/app
+    container_name: dinamo_api
+    restart: always
+    depends_on:
+      - mysqlDB
+    port:
+      - 3001:3001
+  mysqlDB:
+    image: mysql:8.0.21
+    container_name: dinamo_api_database
+    platform: linux/x86_64
+    restart: always
+    ports:
+      - 3006:3006
+      - 33060:33060
+
+networks:
+  default:
+    name: dinamo_api_net
