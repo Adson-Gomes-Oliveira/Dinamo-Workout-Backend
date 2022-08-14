@@ -1,17 +1,22 @@
 const exerciseServices = require('../services/exerciseServices');
 const customError = require('../helpers/customError');
 
-const getAll = async (req, res) => {
-  const { include } = req.query;
-
-  if (include === 'true') {
-    const data = await exerciseServices.getAllWithSchemas();
+const getAll = async (req, res, next) => {
+  try {
+    const { include } = req.query;
+  
+    if (include === 'true') {
+      const data = await exerciseServices.getAllWithSchemas();
+      return res.status(data.code).json(data.result);
+    }
+  
+    const data = await exerciseServices.getAll();
     return res.status(data.code).json(data.result);
+  } catch (error) {
+    next(error)
   }
-
-  const data = await exerciseServices.getAll();
-  return res.status(data.code).json(data.result);
 };
+
 const createWithSchema = async (req, res, next) => {
   try {
     const data = await exerciseServices.createWithSchema(req.body);
