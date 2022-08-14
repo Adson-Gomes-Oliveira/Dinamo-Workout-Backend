@@ -18,9 +18,9 @@ const getAll = async (req, res, next) => {
   }
 };
 
-const createWithSchema = async (req, res, next) => {
+const create = async (req, res, next) => {
   try {
-    const data = await exerciseServices.createWithSchema(req.body);
+    const data = await exerciseServices.create(req.body);
 
     if (data.message) {
       const err = customError(data);
@@ -35,5 +35,5 @@ const createWithSchema = async (req, res, next) => {
 
 module.exports = {
   getAll,
-  createWithSchema,
+  create,
 };

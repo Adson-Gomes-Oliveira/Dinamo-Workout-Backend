@@ -8,15 +8,7 @@ const errorObjects = {
   payloadMode: { message: 'Must be free or machine', code: status.BAD_REQUEST },
   payloadRecord: { message: 'Must be a number', code: status.BAD_REQUEST },
   payloadSchema: { message: 'Must be a string ( max 1 )', code: status.BAD_REQUEST },
-}
-
-const validatePayloadStrings = (string) => {
-  if (string.includes('https://')
-  || string === 'free'
-  || string === 'machine') return true;
-
-  return false;
-}
+};
 
 const payloadRules = {
     validateName: JOI.object({ name: JOI.string().required() }),
@@ -28,7 +20,19 @@ const payloadRules = {
     validateSchema: JOI.object({ schema: JOI.string().min(1).max(1).required() }),
 };
 
+const validatePayloadStrings = (string) => {
+  if (string.includes('https://')
+  || string === 'free'
+  || string === 'machine') return true;
+
+  return false;
+};
+
 const create = (payload) => {
+  if (Object.values(payload).length < 1) {
+    return errorObjects.payloadName;
+  }
+
   const { name, reps, howTo, mode, weightRecord, repsRecord, schema } = payload;
   const validName = payloadRules.validateName.validate({ name });
   const validReps = payloadRules.validateReps.validate({ reps });
@@ -48,7 +52,7 @@ const create = (payload) => {
   if (!validMode) return errorObjects.payloadMode;
 
   return {};
-}
+};
 
 module.exports = {
   create,
