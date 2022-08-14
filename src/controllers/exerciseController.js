@@ -11,9 +11,10 @@ const getAll = async (req, res, next) => {
     }
   
     const data = await exerciseServices.getAll();
+
     return res.status(data.code).json(data.result);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
@@ -24,9 +25,9 @@ const createWithSchema = async (req, res, next) => {
     if (data.message) {
       const err = customError(data);
       throw err;
-    };
+    }
 
-    res.status(data.code).json(data.result);
+    return res.status(data.code).json(data.result);
   } catch (error) {
     next(error);
   };
@@ -35,4 +36,4 @@ const createWithSchema = async (req, res, next) => {
 module.exports = {
   getAll,
   createWithSchema,
-}
+};

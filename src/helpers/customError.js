@@ -1,7 +1,7 @@
 const apiError = (errObject) => {
-  console.log(errObject);
   const err = new Error(errObject.message);
   err.status = errObject.code;
+  err.type = 'custom'
   return err;
 };
 
