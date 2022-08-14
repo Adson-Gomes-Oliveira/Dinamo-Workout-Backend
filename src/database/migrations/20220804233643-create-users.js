@@ -1,12 +1,6 @@
 'use strict';
 
 module.exports = {
-
-/**
-* @param {import('sequelize').Sequelize} Sequelize
-* @param {import('sequelize').queryInterface} queryInterface
-*/
-
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
       id: {
@@ -17,16 +11,15 @@ module.exports = {
       },
       username: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
-      passwordHash:{
+      password:{
         allowNull: false,
-        type: Sequelize.STRING,
-        field: 'password_hash'
+        type: Sequelize.STRING
       },
       firstName: {
         allowNull: false,
@@ -43,10 +36,23 @@ module.exports = {
         type: Sequelize.DATEONLY,
         field: 'birth_date'
       },
+      healthId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        field: 'health_id',
+        references: {
+          model: 'health',
+          key: 'id',
+        },
+        onDelete: 'CASCADE'
+      },
       active: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: 1
+      },
+      token: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -58,11 +64,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'updated_at'
+        field: 'updated_at',
+        onUpdate: 'CASCADE'
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('users');
   }
 };
