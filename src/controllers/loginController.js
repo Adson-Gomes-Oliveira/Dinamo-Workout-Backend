@@ -1,9 +1,9 @@
-const signInServices = require('../services/signInServices');
+const loginServices = require('../services/loginServices');
 const customError = require('../helpers/customError');
 
 const signIn = async (req, res, next) => {
   try {
-    const token = await signInServices.signIn(req.body);
+    const token = await loginServices.signIn(req.body);
 
     if (token.message) {
       const err = customError(token);

@@ -1,31 +1,31 @@
 'use strict';
 
-const Record = (sequelize, DataTypes) => {
-  const Record = sequelize.define('Record', {
+const Registry = (sequelize, DataTypes) => {
+  const Registry = sequelize.define('Registry', {
     userId: DataTypes.INTEGER,
     schemaId: DataTypes.INTEGER,
     duration: DataTypes.INTEGER,
     rate: DataTypes.INTEGER,
     note: DataTypes.TEXT
   },{
-    tableName: 'records',
+    tableName: 'registries',
     underscored: true,
     updatedAt: false
   });
 
-  Record.associate = (models) => {
-    Record.belongsTo(models.User, {
+  Registry.associate = (models) => {
+    Registry.belongsTo(models.User, {
       as: 'user',
       foreignKey: 'userId'
     });
 
-    Record.belongsTo(models.Schema, {
+    Registry.belongsTo(models.Schema, {
       as: 'schema',
       foreignKey: 'schemaId'
     });
   };
 
-  return Record;
+  return Registry;
 }
 
-module.exports = Record;
+module.exports = Registry;
