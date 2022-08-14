@@ -11,7 +11,7 @@ const encrypt = (password) => {
 const check = (password, passwordInDB) => {
   const isMatch = bcrypt.compareSync(password, passwordInDB);
   if (!isMatch) {
-    return { message: 'Incorrect Password', code: status.UNAUTHORIZED }
+    return { message: 'Incorrect Password', code: status.UNAUTHORIZED };
   };
 
   return {};
@@ -19,5 +19,5 @@ const check = (password, passwordInDB) => {
 
 module.exports = {
   encrypt,
-  check,
-}
+  check
+};
