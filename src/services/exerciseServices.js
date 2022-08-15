@@ -1,5 +1,5 @@
 const { Exercise, Schema } = require('../database/models/index');
-const valid = require('../validations/exerciseValidate');
+const valid = require('../validations/exercise');
 const status = require('../helpers/httpStatus');
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');

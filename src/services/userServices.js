@@ -3,6 +3,7 @@ const encryptPassword = require ('../helpers/encryptPassword');
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 const status = require('../helpers/httpStatus');
+const valid = require('../validations/user');
 
 const sequelize = new Sequelize(config.development);
 
@@ -23,16 +24,17 @@ const getAllWithHealth = async () => {
 };
 
 const create = async (payload) => {
-  // Miss Validation
+  const validation = valid.create(payload);
+  if (validation.message) return validation;
+
   const { username, email, passwordNoCrypt, 
     firstName, lastName, birthDate } = payload;
-  console.log(sequelize.transaction);
+  const password = encryptPassword.encrypt(passwordNoCrypt);
+
   try {
     const transaction = await sequelize.transaction(async (t) => {
-      console.log('OOOIII');
       const newHealth = await Health.create({ transaction: t });
   
-      const password = encryptPassword.encrypt(passwordNoCrypt);
       await User.create({ username, email, password, firstName,
           lastName, birthDate, healthId: newHealth.id }, { transaction: t });
 
