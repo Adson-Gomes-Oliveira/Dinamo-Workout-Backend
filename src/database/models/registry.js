@@ -5,6 +5,7 @@ const Registry = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     schemaId: DataTypes.INTEGER,
     duration: DataTypes.INTEGER,
+    date: DataTypes.DATEONLY,
     rate: DataTypes.INTEGER,
     note: DataTypes.TEXT
   },{

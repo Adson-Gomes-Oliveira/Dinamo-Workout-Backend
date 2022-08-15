@@ -3,12 +3,12 @@ const encryptPassword = require ('../helpers/encryptPassword');
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 const status = require('../helpers/httpStatus');
+const valid = require('../validations/user');
 
 const sequelize = new Sequelize(config.development);
 
 const getAll = async () => {
   const response = await User.findAll();
-
   return { result: response, code: status.OK };
 };
 
@@ -23,18 +23,23 @@ const getAllWithHealth = async () => {
 };
 
 const create = async (payload) => {
-  // Miss Validation
+  const validation = valid.create(payload);
+  if (validation.message) return validation;
+
   const { username, email, passwordNoCrypt, 
     firstName, lastName, birthDate } = payload;
-  console.log(sequelize.transaction);
+  const password = encryptPassword.encrypt(passwordNoCrypt);
+
   try {
     const transaction = await sequelize.transaction(async (t) => {
-      console.log('OOOIII');
       const newHealth = await Health.create({ transaction: t });
   
-      const password = encryptPassword.encrypt(passwordNoCrypt);
-      await User.create({ username, email, password, firstName,
+      const createUser = await User.create({ username, email, password, firstName,
           lastName, birthDate, healthId: newHealth.id }, { transaction: t });
+
+      if (createUser.errors) {
+        return { message: 'Email already registered', code: status.BAD_REQUEST };
+      }
 
       return {
         result: { username, email, firstName, lastName, birthDate },
@@ -44,7 +49,11 @@ const create = async (payload) => {
 
     return transaction;
   } catch (error) {
-    console.log(error);
+    const [ errObj ] = error.errors;
+    if (errObj.message === 'email must be unique') {
+      return { message: errObj.message, code: status.INTERNAL };
+    }
+
     return { message: error, code: status.INTERNAL };
   }
 };

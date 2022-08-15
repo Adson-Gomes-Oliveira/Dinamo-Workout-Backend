@@ -9,8 +9,7 @@ const User = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     birthDate: DataTypes.DATEONLY,
     healthId: DataTypes.INTEGER,
-    active: DataTypes.BOOLEAN,
-    token: DataTypes.STRING
+    active: DataTypes.BOOLEAN
   }, {
     tableName: 'users',
     underscored: true

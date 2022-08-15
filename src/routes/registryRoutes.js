@@ -1,9 +1,9 @@
 const express = require('express');
-const recordController = require('../controllers/recordController');
+const recordController = require('../controllers/registryController');
 
 const router = express.Router();
 
-router.get('/details', recordController.getAll);
+router.get('/schema', recordController.getAll);
 router.post('/', recordController.create);
 
 module.exports = router;
