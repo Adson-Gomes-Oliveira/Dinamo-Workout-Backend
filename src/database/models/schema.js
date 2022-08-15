@@ -11,7 +11,7 @@ const Schema = (sequelize, DataTypes) => {
 
   Schema.associate = (models) => {
     Schema.hasMany(models.Exercise, {
-      as: 'schema',
+      as: 'schemas',
       foreignKey: 'schema_id'
     });
   };

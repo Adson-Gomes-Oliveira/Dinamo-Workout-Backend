@@ -2,22 +2,34 @@ version: '3'
 
 services:
   node:
-    build: .
+    build: ./
     volumes:
-      - ./:/app
+      - /home/agdev/Personal-Repository/dinamo_API:/usr/src/app
     container_name: dinamo_api
+    tty: true
+    stdin_open: true
+    command: bash
     restart: always
     depends_on:
       - mysqlDB
-    port:
+    ports:
       - 3001:3001
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      HOSTNAME: db
+      JWT_SECRET: secretJWT
   mysqlDB:
     image: mysql:8.0.21
     container_name: dinamo_api_database
     platform: linux/x86_64
     restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dinamo_api
     ports:
-      - 3006:3006
+      - 3306:3306
       - 33060:33060
 
 networks:

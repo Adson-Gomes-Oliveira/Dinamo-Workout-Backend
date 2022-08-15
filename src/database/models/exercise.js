@@ -16,7 +16,7 @@ const Exercise = (sequelize, DataTypes) => {
 
   Exercise.associate = (models) => {
     Exercise.belongsTo(models.Schema, {
-      as: 'schema',
+      as: 'schemas',
       foreignKey: 'schemaId'
     });
   };
