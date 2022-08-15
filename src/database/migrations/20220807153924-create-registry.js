@@ -32,6 +32,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      date: {
+        allowNull: false,
+        type: Sequelize.DATEONLY,
+      },
       rate: {
         type: Sequelize.INTEGER
       },

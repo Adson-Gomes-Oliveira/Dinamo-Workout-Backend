@@ -17,6 +17,7 @@ const getAllWithSchemas = async () => {
       { model: Schema, as: 'schemas', attributes: { exclude: ['id'] } }
     ]
   });
+
   return { result: response, code: status.OK };
 };
 

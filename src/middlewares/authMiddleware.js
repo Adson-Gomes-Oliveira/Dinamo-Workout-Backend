@@ -19,7 +19,7 @@ const authMiddleware = (req, _res, next) => {
 
     if (user.message) {
       const err = customError({
-        message: 'Unauthorized, invalid token!',
+        message: 'Unauthorized, invalid or expired token!',
         code: status.UNAUTHORIZED,
       });
 

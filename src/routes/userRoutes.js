@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/', userControllers.create);
 router.use(authorization);
-router.get('/details', userControllers.getAll);
+router.get('/health', userControllers.getAll);
 
 module.exports = router;

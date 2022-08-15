@@ -3,7 +3,7 @@ const Login = require('./loginRoutes');
 const Exercises = require('./exerciseRoutes');
 const Schema = require('./schemaRoutes');
 const Health = require('./healthRoutes');
-const Records = require('./recordRoutes');
+const Registry = require('./registryRoutes');
 
 module.exports = {
   Users,
@@ -11,5 +11,5 @@ module.exports = {
   Exercises,
   Schema,
   Health,
-  Records,
+  Registry,
 };

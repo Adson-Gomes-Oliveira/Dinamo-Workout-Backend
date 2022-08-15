@@ -15,7 +15,8 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       password:{
         allowNull: false,
@@ -50,9 +51,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: 1
-      },
-      token: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

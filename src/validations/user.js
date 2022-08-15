@@ -51,7 +51,7 @@ const create = (payload) => {
   };
   if (validation.birthDateValid.error) {
     return {
-      message: validation.birthDateValid.error.details[0].message,, 
+      message: validation.birthDateValid.error.details[0].message,
       code: status.BAD_REQUEST
     };
   };

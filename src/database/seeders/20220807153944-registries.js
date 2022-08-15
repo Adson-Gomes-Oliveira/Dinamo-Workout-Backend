@@ -7,6 +7,7 @@ module.exports = {
         user_id: 1,
         schema_id: 2,
         duration: 90,
+        date: '2020-08-07',
         rate: 4,
         note: `Foi um bom treino mas pequei um pouco em ir até a falha preciso corrigir.`
       },

@@ -17,7 +17,7 @@ app.use(authorization);
 app.use('/exercise', routers.Exercises);
 app.use('/schema', routers.Schema);
 app.use('/health', routers.Health);
-app.use('/registry', routers.Records);
+app.use('/registry', routers.Registry);
 app.use(error);
 
 module.exports = app;

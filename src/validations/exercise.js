@@ -11,13 +11,13 @@ const errorObjects = {
 };
 
 const payloadRules = {
-    validateName: JOI.object({ name: JOI.string().required() }),
-    validateReps: JOI.object({ reps: JOI.number().max(20).required() }),
-    validateRecord: JOI.object({ 
-      weightRecord: JOI.number(),
-      repsRecord: JOI.number(),
-    }),
-    validateSchema: JOI.object({ schema: JOI.string().min(1).max(1).required() }),
+  validateName: JOI.object({ name: JOI.string().required() }),
+  validateReps: JOI.object({ reps: JOI.number().max(20).required() }),
+  validateRecord: JOI.object({ 
+    weightRecord: JOI.number(),
+    repsRecord: JOI.number(),
+  }),
+  validateSchema: JOI.object({ schema: JOI.string().min(1).max(1).required() }),
 };
 
 const validatePayloadStrings = (string) => {
