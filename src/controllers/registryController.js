@@ -1,16 +1,16 @@
-const recordServices = require('../services/recordServices');
+const registryServices = require('../services/registryServices');
 const customError = require('../helpers/customError');
 
 const getAll = async (req, res, next) => {
   try {
-    const { includes } = req.query;
+    const { include } = req.query;
   
-    if (includes === 'true') {
-      const data = await recordServices.getAllWithDetails();
+    if (include === 'true') {
+      const data = await registryServices.getAllWithDetails();
       return res.status(data.code).json(data.result);
     }
   
-    const data = await recordServices.getAll();
+    const data = await registryServices.getAll();
   
     return res.status(data.code).json(data.result);
   } catch (error) {
@@ -20,7 +20,7 @@ const getAll = async (req, res, next) => {
 const create = async (req, res, next) => {
   try {
     const payload = req.body;
-    const data = await recordServices.create(payload);
+    const data = await registryServices.create(payload);
   
     if (data.message) {
       const err = customError(data);

@@ -3,10 +3,14 @@ const JWT = require('../helpers/JSONWebToken');
 const encrypt = require('../helpers/encryptPassword');
 const status = require('../helpers/httpStatus');
 
-const signIn = async (user) => {
+const login = async (user) => {
   const { email, password } = user;
 
   const findUser = await User.findOne({ where: { email } });
+  if (!findUser) {
+    return { message: 'User not found', code: status.UNAUTHORIZED };
+  }
+
   const { dataValues } = findUser;
 
   const validatePassword = encrypt.check(password, dataValues.password);
@@ -19,5 +23,5 @@ const signIn = async (user) => {
 };
 
 module.exports = {
-  signIn,
+  login,
 }

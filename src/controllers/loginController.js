@@ -3,7 +3,7 @@ const customError = require('../helpers/customError');
 
 const signIn = async (req, res, next) => {
   try {
-    const token = await loginServices.signIn(req.body);
+    const token = await loginServices.login(req.body);
 
     if (token.message) {
       const err = customError(token);

@@ -11,8 +11,9 @@
     "swagger": "node swagger.js",
     "coverage": "nyc --all npm run test",
     "drop": "npx sequelize db:drop",
-    "prestart": "npx sequelize db:create && db:migrate",
-    "seed": "npx sequelize db:seed"
+    "prestart": "npx sequelize db:create && npx sequelize db:migrate",
+    "seed": "npx sequelize db:seed:all",
+    "unseed": "npx sequelize db:seed:undo:all"
   },
   "author": "Adson Gomes Oliveira",
   "license": "MIT",
