@@ -1,7 +1,6 @@
 FROM node:16
-WORKDIR /app
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
 EXPOSE 3001
-COPY package.json ./
-CMD npm install
-COPY . ./
-ENTRYPOINT npm run dev

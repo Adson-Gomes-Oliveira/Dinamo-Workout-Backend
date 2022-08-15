@@ -9,7 +9,7 @@ const sequelize = new Sequelize(config.development);
 const getAll = async () => {
   const response = await User.findAll();
 
-  return response;
+  return { result: response, code: status.OK };
 };
 
 const getAllWithHealth = async () => {
@@ -19,17 +19,17 @@ const getAllWithHealth = async () => {
     ],
   });
 
-  return response;
+  return { result: response, code: status.OK };
 };
 
 const create = async (payload) => {
   // Miss Validation
-
   const { username, email, passwordNoCrypt, 
     firstName, lastName, birthDate } = payload;
-  
+  console.log(sequelize.transaction);
   try {
     const transaction = await sequelize.transaction(async (t) => {
+      console.log('OOOIII');
       const newHealth = await Health.create({ transaction: t });
   
       const password = encryptPassword.encrypt(passwordNoCrypt);
@@ -44,6 +44,7 @@ const create = async (payload) => {
 
     return transaction;
   } catch (error) {
+    console.log(error);
     return { message: error, code: status.INTERNAL };
   }
 };

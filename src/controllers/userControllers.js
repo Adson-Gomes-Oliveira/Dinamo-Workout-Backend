@@ -5,6 +5,7 @@ const getAll = async (req, res, next) => {
     const { include } = req.query;
   
     if (include === 'true') {
+      console.log(include);
       const data = await userServices.getAllWithHealth();
       return res.status(data.code).json(data.result);
     }
