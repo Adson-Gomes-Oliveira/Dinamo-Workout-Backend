@@ -14,7 +14,7 @@ const getAll = async () => {
 const getAllWithSchemas = async () => {
   const response = await Exercise.findAll({
     include: [
-      { model: Schema, as: 'schema', attributes: { exclude: ['id'] } }
+      { model: Schema, as: 'schemas', attributes: { exclude: ['id'] } }
     ]
   });
   return { result: response, code: status.OK };

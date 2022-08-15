@@ -4,6 +4,6 @@ const exerciseController = require('../controllers/exerciseController');
 const router = express.Router();
 
 router.get('/details', exerciseController.getAll);
-router.post('/', exerciseController.createWithSchema);
+router.post('/', exerciseController.create);
 
 module.exports = router;
