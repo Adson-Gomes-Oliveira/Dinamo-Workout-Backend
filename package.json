@@ -8,12 +8,7 @@
     "test": "mocha ./tests/**/ --exit",
     "dev": "nodemon ./src/server.js",
     "start": "node src/server.js",
-    "coverage": "nyc --all npm run test",
-    "drop": "npx sequelize db:drop",
-    "prestart": "npx sequelize db:create && npx sequelize db:migrate",
-    "seed": "npx sequelize db:seed:all",
-    "unseed": "npx sequelize db:seed:undo:all",
-    "resetall": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all"
+    "coverage": "nyc --all npm run test"
   },
   "author": "Adson Gomes Oliveira",
   "license": "MIT",
