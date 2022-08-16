@@ -11,16 +11,6 @@ const getAll = async () => {
   return { result: response, code: status.OK };
 };
 
-const getAllWithSchemas = async () => {
-  const response = await Exercise.findAll({
-    include: [
-      { model: Schema, as: 'schemas', attributes: { exclude: ['id'] } }
-    ]
-  });
-
-  return { result: response, code: status.OK };
-};
-
 const createWithSchema = async (payload) => {
   const { name, reps, howTo, mode,
     weightRecord, repsRecord, schema } = payload;

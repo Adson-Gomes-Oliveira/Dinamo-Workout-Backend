@@ -18,6 +18,7 @@ app.use('/exercise', routers.Exercises);
 app.use('/schema', routers.Schema);
 app.use('/health', routers.Health);
 app.use('/registry', routers.Registry);
+app.use('/schema-exercise', routers.SchemaExercise);
 app.use(error);
 
 module.exports = app;

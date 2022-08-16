@@ -23,16 +23,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      schemaId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        field: 'schema_id',
-        references: {
-          model: 'schemas',
-          key: 'id',
-        },
-        onDelete: 'CASCADE'
-      },
       weightRecord: {
         type: Sequelize.INTEGER,
         field: 'weight_record'

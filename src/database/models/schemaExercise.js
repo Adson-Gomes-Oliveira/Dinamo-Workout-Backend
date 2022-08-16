@@ -1,7 +1,7 @@
 'use strict';
 
-const SchemasExercises = (sequelize, DataTypes) => {
-  const SchemasExercises = sequelize.define('SchemasExercises', {
+const SchemaExercise = (sequelize, DataTypes) => {
+  const SchemaExercise = sequelize.define('SchemaExercise', {
     schemaId: {
       type: DataTypes.INTEGER,
       primaryKey: true
@@ -16,22 +16,22 @@ const SchemasExercises = (sequelize, DataTypes) => {
     underscored: true
   });
 
-  SchemasExercises.associate = function(models) {
+  SchemaExercise.associate = function(models) {
     models.Schema.belongsToMany(models.Exercise, {
       as: 'exercises',
-      through: SchemasExercises,
+      through: SchemaExercise,
       foreignKey: 'exerciseId',
       otherKey: 'schemaId'
     });
     models.Exercise.belongsToMany(models.Schema, {
       as: 'schemas',
-      through: SchemasExercises,
+      through: SchemaExercise,
       foreignKey: 'schemaId',
       otherKey: 'exerciseId'
     });
   };
 
-  return SchemasExercises;
+  return SchemaExercise;
 }
 
-module.exports = SchemasExercises;
+module.exports = SchemaExercise;

@@ -6,7 +6,6 @@ const Exercise = (sequelize, DataTypes) => {
     reps: DataTypes.INTEGER,
     howTo: DataTypes.STRING,
     mode: DataTypes.STRING,
-    schemaId: DataTypes.INTEGER,
     weightRecord: DataTypes.INTEGER,
     repsRecord: DataTypes.INTEGER
   }, {

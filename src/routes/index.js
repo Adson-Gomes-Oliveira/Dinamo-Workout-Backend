@@ -4,6 +4,7 @@ const Exercises = require('./exerciseRoutes');
 const Schema = require('./schemaRoutes');
 const Health = require('./healthRoutes');
 const Registry = require('./registryRoutes');
+const SchemaExercise = require('./schemaExerciseRoutes');
 
 module.exports = {
   Users,
@@ -12,4 +13,5 @@ module.exports = {
   Schema,
   Health,
   Registry,
+  SchemaExercise
 };
