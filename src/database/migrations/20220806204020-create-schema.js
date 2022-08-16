@@ -12,13 +12,7 @@ module.exports = {
       schema: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        field: 'created_at'
-      },
+      }
     });
   },
   async down(queryInterface, _Sequelize) {

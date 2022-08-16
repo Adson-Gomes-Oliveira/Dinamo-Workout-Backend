@@ -6,15 +6,8 @@ const Schema = (sequelize, DataTypes) => {
   },{
     tableName: 'schemas',
     underscored: true,
-    updatedAt: false
+    timestamps: false
   });
-
-  Schema.associate = (models) => {
-    Schema.hasMany(models.Exercise, {
-      as: 'schemas',
-      foreignKey: 'schema_id'
-    });
-  };
 
   return Schema;
 }

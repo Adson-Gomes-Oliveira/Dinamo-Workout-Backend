@@ -8,7 +8,7 @@ const SchemasExercises = (sequelize, DataTypes) => {
     },
     exerciseId: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
+      primaryKey: true
     }
   }, {
     timestamps: false,
