@@ -1,27 +1,28 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    queryInterface.bulkInsert('schemas_exercises', [
+  async up (queryInterface, _Sequelize) {
+    await queryInterface.bulkInsert('schemas_exercises', [
       {
-        schemaId: 1,
-        exerciseId: 1
+        schema_id: 1,
+        exercise_id: 1
       },
       {
-        schemaId: 1,
-        exerciseId: 2
+        schema_id: 1,
+        exercise_id: 2
       },
       {
-        schemaId: 1,
-        exerciseId: 3
+        schema_id: 1,
+        exercise_id: 3
       },
       {
-        schemaId: 2,
-        exerciseId: 1
-      }
-    ], { timestamps: false });
-},
-  async down (queryInterface, Sequelize) {
-    queryInterface.bulkDelete('schemas_exercises', null, {});
+        schema_id: 2,
+        exercise_id: 4
+      },
+    ]);
+  },
+
+  async down (queryInterface, _Sequelize) {
+    await queryInterface.bulkDelete('schemas_exercises', null, {});
   }
 };
