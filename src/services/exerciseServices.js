@@ -69,6 +69,5 @@ const create = async (payload) => {
 
 module.exports = {
   getAll,
-  getAllWithSchemas,
   create
 };
