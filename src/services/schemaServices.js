@@ -4,7 +4,7 @@ const status = require('../helpers/httpStatus');
 const getAll = async () => {
   const response = await Schema.findAll({
     include: [
-      { model: Exercise, as: 'exercises', attributes: { exclude: ['id'] } }
+      { model: Exercise, as: 'exercises' }
     ]
 
   });
