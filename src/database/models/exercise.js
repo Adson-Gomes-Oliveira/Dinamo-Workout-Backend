@@ -2,6 +2,10 @@
 
 const Exercise = (sequelize, DataTypes) => {
   const Exercise = sequelize.define('Exercise', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
     name: DataTypes.STRING,
     reps: DataTypes.INTEGER,
     howTo: DataTypes.STRING,

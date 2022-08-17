@@ -7,6 +7,7 @@ const getAll = async (_req, res, next) => {
 
     return res.status(data.code).json(data.result);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 }

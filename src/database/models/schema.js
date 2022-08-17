@@ -2,6 +2,10 @@
 
 const Schema = (sequelize, DataTypes) => {
   const Schema = sequelize.define('Schema', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     schema: DataTypes.STRING
   },{
     tableName: 'schemas',
