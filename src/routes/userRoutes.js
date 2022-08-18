@@ -7,5 +7,7 @@ const router = express.Router();
 router.post('/', userControllers.create);
 // router.use(authorization);
 router.get('/health', userControllers.getAll);
+router.get('/:id/health', userControllers.getByID);
+router.put('/:id', userControllers.edit);
 
 module.exports = router;

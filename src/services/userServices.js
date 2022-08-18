@@ -12,8 +12,23 @@ const getAll = async () => {
   return { result: response, code: status.OK };
 };
 
+const getByID = async (userID) => {
+  const response = await User.findByPk(userID);
+  return { result: response, code: status.OK };
+};
+
 const getAllWithHealth = async () => {
   const response = await User.findAll({
+    include: [
+      { model: Health, as: 'health', attributes: { exclude: ['id'] } }
+    ],
+  });
+
+  return { result: response, code: status.OK };
+};
+
+const getByIdWithHealth = async (userID) => {
+  const response = await User.findByPk(userID, {
     include: [
       { model: Health, as: 'health', attributes: { exclude: ['id'] } }
     ],
@@ -58,8 +73,58 @@ const create = async (payload) => {
   }
 };
 
+const editWithPassword = async (payload, userID) => {
+  const { username, email, passwordNoCrypt, 
+    firstName, lastName, birthDate } = payload;
+    console.log(userID);
+  const password = encryptPassword.encrypt(passwordNoCrypt);
+
+  try {
+    const transaction = await sequelize.transaction(async (t) => {
+      const edit = await User.update({ username, email, password, firstName,
+        lastName, birthDate }, { where: { id: userID } }, { transaction: t });
+        console.log(edit);
+      return { result: payload, code: status.CREATED };
+    });
+
+    return transaction;
+  } catch (error) {
+    console.log(error);
+    return { result: error, code: status.INTERNAL };
+  }
+};
+
+const editWithoutPassword = async (payload, userID) => {
+  const { username, email, firstName, lastName, birthDate } = payload;
+
+  try {
+    const transaction = await sequelize.transaction(async (t) => {
+      await User.update({ username, email, password, firstName, 
+        lastName, birthDate }, { where: { id: userID } }, { transaction: t });
+
+      return { result: payload, code: status.CREATED };
+    });
+
+    return transaction;
+  } catch (error) {
+    return { result: error, code: status.INTERNAL };
+  }
+};
+
+const edit = async (payload, userID) => {
+  console.log(userID);
+  const validation = valid.create(payload);
+  if (validation.message) return validation;
+  
+  if (payload.passwordNoCrypt) return editWithPassword(payload, userID);
+  return editWithoutPassword(payload, userID);
+};
+
 module.exports = {
   getAll,
+  getByID,
+  getByIdWithHealth,
   getAllWithHealth,
   create,
+  edit,
 };

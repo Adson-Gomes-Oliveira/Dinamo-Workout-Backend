@@ -18,6 +18,25 @@ const getAll = async (req, res, next) => {
     next(error);
   }
 };
+
+const getByID = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { include } = req.query;
+
+    if (include === 'true') {
+      const data = await userServices.getByIdWithHealth(Number(id));
+      return res.status(data.code).json(data.result);
+    }
+
+    const data = await userServices.getByID(Number(id));
+
+    return res.status(data.code).json(data.result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const create = async (req, res, next) => {
   try {
     const payload = req.body;
@@ -34,7 +53,27 @@ const create = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const payload = req.body;
+    const data = await userServices.edit(payload, id);
+
+    if (data.message) {
+      const err = customError(data);
+      throw err;
+    }
+
+    return res.status(data.code).json(data.result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  };
+};
+
 module.exports = {
   getAll,
+  getByID,
   create,
+  edit
 };
