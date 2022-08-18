@@ -112,7 +112,6 @@ const editWithoutPassword = async (payload, userID) => {
 };
 
 const edit = async (payload, userID) => {
-  console.log(userID);
   const validation = valid.create(payload);
   if (validation.message) return validation;
   

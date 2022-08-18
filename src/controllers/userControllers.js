@@ -55,9 +55,8 @@ const create = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   try {
-    const { id } = req.params;
     const payload = req.body;
-    const data = await userServices.edit(payload, id);
+    const data = await userServices.edit(payload, req.user.id);
 
     if (data.message) {
       const err = customError(data);

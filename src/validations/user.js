@@ -37,7 +37,7 @@ const verifyPayload = (payload) => {
 };
 
 const create = (payload) => {
-  if (!(typeof payload === 'object' || Object.values(payload).length < 1)) {
+  if (!(typeof payload === 'object' || Object.values(payload).length >= 1)) {
     return { message: 'Invalid Payload', code: status.BAD_REQUEST };
   }
 
