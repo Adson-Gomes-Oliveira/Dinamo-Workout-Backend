@@ -12,6 +12,10 @@ module.exports = {
       schema: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
     });
   },

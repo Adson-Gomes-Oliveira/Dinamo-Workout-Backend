@@ -4,13 +4,24 @@ module.exports = {
   async up (queryInterface, _Sequelize) {
     queryInterface.bulkInsert('schemas', [
       {
-        schema: 'A'
+        schema: 'A',
+        description: `Treinar 3 vezes por semana.
+        Segunda: Peito, biceps, ombro;
+        Quarta: Costas, triceps, antebracos;
+        Sexta: Pernas;`
       },
       {
-        schema: 'B'
+        schema: 'B',
+        description: `Treinar 5 vezes por semana.
+        Segunda: Peito, biceps;;
+        Terça: Costas, Triceps;
+        Quarta: Perna, Ombro;
+        Quinta: Peito, Biceps;
+        Sexta: Costas, Triceps;`
       },
       {
-        schema: 'C'
+        schema: 'C',
+        description: ''
       },
     ]);
   },

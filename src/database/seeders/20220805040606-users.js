@@ -10,16 +10,8 @@ module.exports = {
         first_name: 'Adson',
         last_name: 'Gomes Oliveira',
         birth_date: '2000-10-10',
-        health_id: 1
-      },
-      {
-        username: 'johstetic',
-        email: 'johsobrancelhas@gmail.com',
-        password: '$2b$10$lng2f0H8/dp9UiuuFnxnDOKfsxvUb0PIvWSNZlaoekiFdrDkDlfAa',
-        first_name: 'Joana',
-        last_name: 'Santana Gomes',
-        birth_date: '2001-02-24',
-        health_id: 2
+        health_id: 1,
+        rule: 'admin'
       }
     ]);
   },
