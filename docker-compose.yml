@@ -4,7 +4,7 @@ services:
   node:
     build: ./
     volumes:
-      - /home/agdev/Personal-Repository/dinamo_API:/usr/src/app
+      - ./:/app
     container_name: dinamo_api
     tty: true
     stdin_open: true
