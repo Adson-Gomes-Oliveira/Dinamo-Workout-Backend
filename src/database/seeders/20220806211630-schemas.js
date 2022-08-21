@@ -1,14 +1,12 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, _Sequelize) {
+  async up(queryInterface) {
     queryInterface.bulkInsert('schemas', [
       {
         schema: 'A',
         description: `Treinar 3 vezes por semana.
         Segunda: Peito, biceps, ombro;
         Quarta: Costas, triceps, antebracos;
-        Sexta: Pernas;`
+        Sexta: Pernas;`,
       },
       {
         schema: 'B',
@@ -17,16 +15,16 @@ module.exports = {
         Terça: Costas, Triceps;
         Quarta: Perna, Ombro;
         Quinta: Peito, Biceps;
-        Sexta: Costas, Triceps;`
+        Sexta: Costas, Triceps;`,
       },
       {
         schema: 'C',
-        description: ''
+        description: '',
       },
     ]);
   },
 
-  async down (queryInterface, _Sequelize) {
+  async down(queryInterface) {
     queryInterface.bulkDelete('schemas', null, {});
-  }
+  },
 };

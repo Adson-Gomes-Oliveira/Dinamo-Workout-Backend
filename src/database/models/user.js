@@ -1,5 +1,3 @@
-'use strict';
-
 const User = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
@@ -13,13 +11,13 @@ const User = (sequelize, DataTypes) => {
     rule: DataTypes.STRING,
   }, {
     tableName: 'users',
-    underscored: true
+    underscored: true,
   });
 
   User.associate = (models) => {
     User.belongsTo(models.Health, {
       as: 'health',
-      foreignKey: 'healthId'
+      foreignKey: 'healthId',
     });
   };
 

@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, _Sequelize) {
+  async up(queryInterface) {
     queryInterface.bulkInsert('registries', [
       {
         user_id: 1,
@@ -9,12 +7,12 @@ module.exports = {
         duration: 90,
         date: '2020-08-07',
         rate: 4,
-        note: `Foi um bom treino mas pequei um pouco em ir até a falha preciso corrigir.`
+        note: 'Foi um bom treino mas pequei um pouco em ir até a falha preciso corrigir.',
       },
     ]);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface) {
     queryInterface.bulkDelete('registries', null, {});
-  }
+  },
 };
