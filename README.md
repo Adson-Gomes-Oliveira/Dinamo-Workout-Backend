@@ -1,4 +1,4 @@
-<center><h2> Dinamo Workout [ REST-API ]</h2></center>
+<center><h2> Dinamo Workout Backend [ REST-API ]</h2></center>
 
 ### Sobre o Projeto
 <center>Olá seja bem vindo ou bem vinda ao repositório da API do Dinamo Workout.  </center>
